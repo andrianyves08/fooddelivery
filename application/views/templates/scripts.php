@@ -13,6 +13,14 @@
             })
             });
         </script>
+        <script type="text/javascript">
+          function add(groupId,val) {
+            let inp = document.querySelector(`[name=numbergroup_${groupId}]`);
+            inp.value= +inp.value + val;
+            if(inp.value<+inp.min) inp.value=inp.min;
+            if(inp.value>+inp.max) inp.value=inp.max;
+          }
+        </script>
         <!-- Unchecked radio button -->
         <script type="text/javascript">
             (function($) {

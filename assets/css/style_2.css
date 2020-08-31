@@ -162,12 +162,6 @@ body {
     color: #eb1c2c;
 }
 
-#quantity p {
-    font-size: 18px;
-    color: #707070;
-    font-weight: 400;
-}
-
 .carousel-indicators li {
     width: 6px;
     height: 6px;

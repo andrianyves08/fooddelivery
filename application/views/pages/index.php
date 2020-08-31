@@ -1,3 +1,14 @@
+<?php
+include 'Mobile_Detect.php';
+$detect = new Mobile_Detect();
+
+if (!$detect->isMobile()) {
+    echo 'Mobile User Only';
+    exit(0);
+}
+
+?>
+
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="searchbar">
         <div class="row">
@@ -57,38 +68,12 @@
 </div>
 <div id="category">
     <div class="row">
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
+    	<?php foreach ($food_type as $food_types): ?>
+         <div class="col-3">
+            <img src="<?php echo base_url(); ?>assets/img/<?php echo ucwords($food_types['image']); ?>" alt="">
+            <div class="centered"><?php echo ucwords($food_types['name']); ?></div>
         </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
-        <div class="col-3">
-            <img src="<?php echo base_url(); ?>assets/img/pexels-photo-1624487.png" alt="">
-            <div class="centered">Centered</div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <div id="recommended">
@@ -97,27 +82,15 @@
     <div class="container">
         <div class="row ">
             <div class="owl-carousel">
-                <div class="card" style="width: 167px;">
-                    <img class="card-img-top" src="<?php echo base_url(); ?>assets/img/food1_1.png" alt="Card image cap">
+            	<?php foreach ($food as $foods): ?>
+		        <div class="card" style="width: 167px;">
+                    <img class="card-img-top" src="<?php echo base_url(); ?>assets/img/<?php echo ucwords($foods['image']); ?>" alt="Card image cap">
                     <div class="card-body">
-                        <h5>Card title</h5>
+                        <h5><a href='<?php echo base_url('food_details/'.$foods['id']); ?>'><?php echo ucwords($foods['name']); ?></a></h5>
                         <i class="fas fa-plus-circle float-right"></i>
                     </div>
                 </div>
-                <div class="card" style="width: 167px;">
-                    <img class="card-img-top" src="<?php echo base_url(); ?>assets/img/food2_2.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5>Card title</h5>
-                        <i class="fas fa-plus-circle float-right"></i>
-                    </div>
-                </div>
-                <div class="card" style="width: 167px;">
-                    <img class="card-img-top" src="<?php echo base_url(); ?>assets/img/food2_2.png" alt="Card image cap">
-                    <div class="card-body">
-                        <h5>Card title</h5>
-                        <i class="fas fa-plus-circle float-right"></i>
-                    </div>
-                </div>
+		        <?php endforeach; ?>
             </div>
         </div>
     </div>
